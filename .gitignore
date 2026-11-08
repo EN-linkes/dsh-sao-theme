@@ -1,0 +1,19 @@
+# 依赖
+node_modules/
+
+# pnpm
+.pnpm-store/
+pnpm-lock.yaml
+
+# 构建产物 / 临时
+out/
+*.log
+
+# 调试时留下的验证截图（只保留 docs/ 里精选的几张）
+docs/verify-*.png
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
