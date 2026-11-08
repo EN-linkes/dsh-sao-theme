@@ -1,6 +1,6 @@
 {
   "name": "dsh-sao-theme",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Sword Art Online / Aincrad style skin for DeepSeek Harness: holographic cyan system windows, corner brackets, scanline HUD, sharp-cornered HUD language, monospace numerals.",
   "type": "module",
   "main": "lib/index.js",
