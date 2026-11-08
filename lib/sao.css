@@ -1325,13 +1325,28 @@ html.sao :is(
   [class*='_9r0rkG_trigger'],
   [class*='fD5ZVa_'],
   .pua-trigger,
-  ._5Qcc8a_trigger,
-  [class*='_button_1ulci_']
+  ._5Qcc8a_trigger
 ) {
   box-shadow: inset 0 0 0 1px rgba(var(--sao-cyan), 0.16);
   color: rgba(var(--sao-cyan), 0.82) !important;
   letter-spacing: 0.04em;
   transition: box-shadow 0.16s ease, background 0.16s ease, color 0.16s ease;
+}
+
+/* 共享 Button 组件（._button_1ulci_*）只做字距，不碰颜色。
+   实测教训：用 [class*='_button_1ulci_'] 统一上青色会把「亮青底 + 深色字」的
+   primary 变体一起染青（插件页右上角按钮文字整块隐形），所以这里按变体分治：
+   primary 走令牌给定的深色前景，其余（ghost/outline/toolbar/icon）才可用青色。 */
+html.sao [class*='_button_1ulci_'] {
+  letter-spacing: 0.04em;
+}
+
+html.sao [class*='_primary_1ulci_'] {
+  color: var(--dsw-alias-label-primary-foreground) !important;
+}
+
+html.sao [class*='_button_1ulci_']:not([class*='_primary_1ulci_']) {
+  color: rgba(var(--sao-cyan), 0.82) !important;
 }
 
 html.sao :is(
@@ -1341,14 +1356,22 @@ html.sao :is(
   [class*='_9r0rkG_trigger'],
   [class*='fD5ZVa_'],
   .pua-trigger,
-  ._5Qcc8a_trigger,
-  [class*='_button_1ulci_']
+  ._5Qcc8a_trigger
 ):hover {
   background: rgba(var(--sao-cyan), 0.10) !important;
   box-shadow:
     inset 0 0 0 1px rgba(var(--sao-cyan), 0.62),
     0 0 16px rgba(var(--sao-cyan), 0.18);
   color: #d4f7ff !important;
+}
+
+html.sao [class*='_button_1ulci_']:hover:not([class*='_primary_1ulci_']) {
+  background: rgba(var(--sao-cyan), 0.10) !important;
+  color: #d4f7ff !important;
+}
+
+html.sao [class*='_primary_1ulci_']:hover {
+  color: var(--dsw-alias-label-primary-foreground) !important;
 }
 
 html.sao .GRgSLq_standardControls {
