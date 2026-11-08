@@ -125,13 +125,45 @@ node dev.mjs                       # 起 127.0.0.1:9700
 # 客户端 URL 带 ?sao-dev，或 localStorage['sao-dev']='1'
 ```
 
+### 可读性回归检查
+
+改配色前先跑一遍，能挡住这个皮肤最容易犯的错——**填充面和文字撞色**：
+
+```bash
+npm run audit          # 四项检查，有问题退出码 1
+npm run audit -- --verbose          # 展开已确认项的理由
+npm run audit -- --write-baseline   # 复核后更新基线
+```
+
+它直接读 DSH 的 `app.asar`，抽出原厂 CSS 后检查：
+
+| # | 检查 | 为什么 |
+|---|---|---|
+| ① | 对比度 < 3.0 | 原厂共 531 条「同时声明 background 与 color」的规则，用主题令牌解析后逐条算 |
+| ② | `[class*='X']` 跨组件通配 | 一个通配命中多个组件命名空间时，很容易误伤 |
+| ③ | 浅色填充但没给 `color` | 会继承浅色文字，等于白底白字 |
+| ④ | `[class*='X']` + `color !important` | **真踩过的雷**，用基线快照比对新增项 |
+
+`app.asar` 路径不是默认位置时传进去：
+
+```bash
+node tools/audit.mjs "D:/other/resources/app.asar"
+```
+
+> 血泪教训：给 `[class*='_button_1ulci_']`（DSH 公共 Button 的**基类**）统一加
+> `color: 青色 !important`，结果全应用每个按钮的文字都被染成青色；主按钮底色同样是青，
+> 对比度直接掉到 **1.00**，字和图标全隐形。**通配能匹配基类时，必须按变体分治**
+> （`_primary_` / `_outline_` / `_ghost_`），尤其是改 `color` 这种会被继承的属性。
+
 ## 已知限制
 
 - 结构层用的是当前版本的 CSS Modules hash 前缀（`mP3x-q`、`wtg9ga`、`an3WzG`、`V4vHZW`、
   `GRgSLq`、`hKdVjq`、`BE0jCW`、`wnFoaW`、`SNx2jG` 等）。**DSH 升级后这些前缀会变**，
   结构层会失效降级，但令牌层（配色）仍然生效——变量名是稳定的。
 - 容易漂移的组件已改用属性选择器（`[class*='_markdown_']`、`[class*='_row_l4nv8_']` 等），
-  哈希变了照样命中。新增样式优先按这个写法来。
+  哈希变了照样命中。**但属性选择器是双刃剑**：匹配到「组件基类」时会连带命中它的所有变体，
+  改 `color` 尤其危险（见上面 `_button_1ulci_` 的教训）。新增样式优先锚定到具体哈希前缀，
+  改完跑一次 `npm run audit`。
 - 升级后要恢复固定的结构层：重跑一次 DOM 快照，把新前缀替换进 `lib/sao.css`。
 
 ## 附：`dsbot-patch/`

@@ -15,7 +15,8 @@
   "author": "EN-linkes",
   "scripts": {
     "build": "node build.mjs",
-    "dev": "node dev.mjs"
+    "dev": "node dev.mjs",
+    "audit": "node tools/audit.mjs"
   },
   "exports": {
     ".": "./lib/index.js",

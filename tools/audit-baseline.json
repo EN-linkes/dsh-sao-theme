@@ -1,0 +1,28 @@
+{
+  "wildcardColor": [
+    "html.sao .an3WzG_tab[class*='Active'], html.sao .an3WzG_tab[aria-selected='true']||#bff3ff",
+    "html.sao .hKdVjq_root:hover [class*='_iconIdle_l4nv8_']||rgb(var(--sao-cyan))",
+    "html.sao .wnFoaW_sessionRow[class*='selected'] .wnFoaW_time||rgba(var(--sao-cyan), 0.85)",
+    "html.sao .wnFoaW_sessionRow[class*='selected'], html.sao .wnFoaW_projectRow[class*='selected']||#eafcff",
+    "html.sao :is( .GRgSLq_add, .GRgSLq_activity button, [class*='_86kJGG_trigger'], [class*='_9r0rkG_trigger'], [class*='fD5ZVa_'], .pua-trigger, ._5Qcc8a_trigger ):hover||#d4f7ff",
+    "html.sao :is( .GRgSLq_add, .GRgSLq_activity button, [class*='_86kJGG_trigger'], [class*='_9r0rkG_trigger'], [class*='fD5ZVa_'], .pua-trigger, ._5Qcc8a_trigger )||rgba(var(--sao-cyan), 0.82)",
+    "html.sao :is([class*='_1KfHza_action'], [class*='Hyy-Wa_action']):hover||rgb(var(--sao-cyan))",
+    "html.sao :is([class*='_1KfHza_action'], [class*='Hyy-Wa_action'])||rgba(var(--sao-cyan), 0.55)",
+    "html.sao :is([class*='jy423G_badge'], [class*='_tag_brmue_'])||rgba(var(--sao-cyan), 0.90)",
+    "html.sao [class*='_1KfHza_timeEnd'], html.sao [class*='_1KfHza_endInfo']||rgba(var(--sao-cyan), 0.42)",
+    "html.sao [class*='_bubble_1sgyj_']||#eafcff",
+    "html.sao [class*='_button_1ulci_']:hover:not([class*='_primary_1ulci_'])||#d4f7ff",
+    "html.sao [class*='_button_1ulci_']:not([class*='_primary_1ulci_'])||rgba(var(--sao-cyan), 0.82)",
+    "html.sao [class*='_iconIdle_l4nv8_']||rgba(var(--sao-cyan), 0.60)",
+    "html.sao [class*='_iconIdle_l4nv8_']||rgba(var(--sao-cyan), 0.85)",
+    "html.sao [class*='_leading_l4nv8_']||rgba(var(--sao-cyan), 0.52)",
+    "html.sao [class*='_leading_l4nv8_']||rgba(var(--sao-cyan), 0.65)",
+    "html.sao [class*='_primary_1ulci_']:hover||var(--dsw-alias-label-primary-foreground)",
+    "html.sao [class*='_primary_1ulci_']||var(--dsw-alias-label-primary-foreground)",
+    "html.sao [class*='_root_l4nv8_']:hover [class*='_leading_l4nv8_']||rgb(var(--sao-cyan))",
+    "html.sao [class*='_text_1rdzk_']||#9cc4d8",
+    "html.sao [class*='_title_l4nv8_']||#cfe9f7",
+    "html.sao [class*='_title_l4nv8_']||#d7eefb",
+    "html.sao [class*='bt-row'] :is( small, em, .bt-row-preview, .bt-q-desc, .bt-agent-sub, .bt-bs-sub )||rgba(var(--sao-cyan), 0.52)"
+  ]
+}
