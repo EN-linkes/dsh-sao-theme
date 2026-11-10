@@ -829,9 +829,18 @@ html.sao :is(
 }
 
 /* ── 13.2 圆角：全量归零 ────────────────────────────────────────── */
-/* 系统窗口没有圆角；开关/勾选/进度这类功能性圆角保留 */
-html.sao body *:not([role='switch']):not([role='checkbox']):not([role='radio']):not([type='checkbox']):not([type='radio']):not(progress):not(meter) {
+/* 系统窗口没有圆角；开关/勾选/进度这类功能性圆角保留。
+   :not() 必须连**子元素**一起豁免 —— 开关的滑块是 [role='switch'] 的子元素，
+   只写 :not([role='switch']) 的话滑块照样被清零，16px 的圆点被削成方块。 */
+html.sao body *:not([role='switch']):not([role='switch'] *):not([role='checkbox']):not([role='checkbox'] *):not([role='radio']):not([role='radio'] *):not([type='checkbox']):not([type='radio']):not(progress):not(meter) {
   border-radius: 0 !important;
+}
+
+/* 保险：万一某个引擎不支持 :not() 里的复合选择器，这条会把开关内部补回圆点 */
+html.sao body [role='switch'] *,
+html.sao body [role='switch']::before,
+html.sao body [role='switch']::after {
+  border-radius: 999px !important;
 }
 
 /* 刻意保留的两个造型 */

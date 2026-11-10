@@ -183,3 +183,5 @@ node tools/audit.mjs "D:/other/resources/app.asar"
 ## License
 
 MIT
+
+版本变更见 [CHANGELOG.md](./CHANGELOG.md)。
